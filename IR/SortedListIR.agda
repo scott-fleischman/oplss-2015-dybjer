@@ -4,17 +4,18 @@ open import IType.Nat
 open import IType.Bool
 open import MLTT.PredicateLogic
 
-mutual
-  data SortedList : Set where
-    [_]  : Nat → SortedList
-    cons : (n : Nat)
-      → (ns : SortedList)
-      → So (n < hd ns)
-      → SortedList
-    
-  hd : SortedList → Nat
-  hd [ n ] = n
-  hd (cons n ns p) = n
+data SortedList : Set
+hd : SortedList → Nat
+
+data SortedList where
+  [_]  : Nat → SortedList
+  cons : (n : Nat)
+    → (ns : SortedList)
+    → So (n < hd ns)
+    → SortedList
+
+hd [ n ] = n
+hd (cons n ns p) = n
 
 --
 -- data MyList: Set where

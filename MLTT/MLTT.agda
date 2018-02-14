@@ -103,26 +103,27 @@ wrec {C = C} d (sup a b) = d a b (λ x → wrec {C = C} d (b x))
 
 -- a universe a la Tarski introduced in Martin-Löf 1984
 
-mutual
-  data U : Set where
-     n₀ : U
-     n₁ : U
-     _⊕_ : U → U → U
-     σ : (a : U) → (T a → U) → U
-     π : (a : U) → (T a → U) → U
-     n : U
-     w : (a : U) → (T a → U) → U
-     i : (a : U) → T a → T a → U
+data  U : Set
+T : U → Set
 
-  T : U → Set
-  T n₀        = N₀
-  T n₁        = N₁
-  T (a ⊕ b)   = T a + T b
-  T (σ a b)   = Σ (T a) (λ x → T (b x))
-  T (π a b)   = Π (T a) (λ x → T (b x))
-  T n         = N
-  T (w a b)   = W (T a) (λ x → T (b x))
-  T (i a b c) = I (T a) b c
+data U where
+   n₀ : U
+   n₁ : U
+   _⊕_ : U → U → U
+   σ : (a : U) → (T a → U) → U
+   π : (a : U) → (T a → U) → U
+   n : U
+   w : (a : U) → (T a → U) → U
+   i : (a : U) → T a → T a → U
+
+T n₀        = N₀
+T n₁        = N₁
+T (a ⊕ b)   = T a + T b
+T (σ a b)   = Σ (T a) (λ x → T (b x))
+T (π a b)   = Π (T a) (λ x → T (b x))
+T n         = N
+T (w a b)   = W (T a) (λ x → T (b x))
+T (i a b c) = I (T a) b c
 
 
 
