@@ -2,22 +2,24 @@ module IFam.EvenOdd where
 
 -- a mutual inductive definition (heterogenous or many-sorted term algebra)
 
-mutual
-  data Even : Set where
-    zero : Even
-    succOdd : Odd → Even
+data Even : Set
+data Odd : Set
 
-  data Odd : Set where
-    succEven : Even → Odd
+data Even where
+  zero : Even
+  succOdd : Odd → Even
+
+data Odd where
+  succEven : Even → Odd
 
 open import IType.Bool
 
 -- an indexed inductive definition (inductive family)
 
 data EvenOdd : Bool → Set where
-   zero : EvenOdd true
-   succOdd : EvenOdd false → EvenOdd true
-   succEven : EvenOdd true → EvenOdd false
+  zero : EvenOdd true
+  succOdd : EvenOdd false → EvenOdd true
+  succEven : EvenOdd true → EvenOdd false
 
 -- Exercise: write the eliminator for EvenOdd and Even and Odd.
 
@@ -42,13 +44,15 @@ i' .false (succEven m) = succEven (i' true m)
 
 open import IType.Nat
 
-mutual
-  data EvenP : Nat → Set where
-    zeroEvenP : EvenP zero
-    succOddP : (m : Nat) → OddP m → EvenP (succ m)
+data EvenP : Nat → Set
+data OddP : Nat → Set
 
-  data OddP : Nat → Set where
-    succEvenP : (m : Nat) → EvenP m → OddP (succ m)
+data EvenP where
+  zeroEvenP : EvenP zero
+  succOddP : (m : Nat) → OddP m → EvenP (succ m)
+
+data OddP where
+  succEvenP : (m : Nat) → EvenP m → OddP (succ m)
 
 -- a decidable predicate ("a Boolean is a bit uninformative")
 

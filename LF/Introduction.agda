@@ -8,4 +8,3 @@ id x = x
 
 _∘_ : {X Y Z : Set} → (Y → Z) → (X → Y) → X → Z
 (g ∘ f) x = g (f x)
-

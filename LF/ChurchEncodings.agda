@@ -1,3 +1,4 @@
+
 module LF.ChurchEncodings where
 
 -- a predicative type of Church-numerals,
@@ -35,7 +36,7 @@ I-leibnitz₁ : (A : Set) → A → A → Set₁
 I-leibnitz₁ A a a' = {X : A → Set} → So₁ (X a) → So₁ (X a')
 
 refl-I-leibnitz : (A : Set) → (a : A) → I-leibnitz₁ A a a
-refl-I-leibnitz A a = ?
+refl-I-leibnitz A a = {!!}
 
 -- the following does not type-check:
 -- I-leibnitz : (A : Set) → A → A → Set
@@ -45,7 +46,3 @@ refl-I-leibnitz A a = ?
 -- in the Agda standard library
 --
 -- open import Level
-
-
-
-
